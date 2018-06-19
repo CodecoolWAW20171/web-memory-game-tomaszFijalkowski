@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta id="boardsize" data-x="{{x}}" data-y="{{y}}">
+        <title>Memory Game</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="{{ url_for('static', filename='script.js') }}" async></script>
+    </head>
+    <body onLoad="newGameBoard()">
+        <div class="wrapper">
+            <header>Memory<span class="game">Game</span></header>
+                <div class="hud">
+                    <div class="back-button">
+                        <a href="{{url_for('index')}}"><i class="fas fa-caret-left"></i> Go Back</a> 
+                    </div>
+                    <div class="back-button">
+                        <i class="fas fa-caret-left"></i> Time elapsed: 2:42
+                    </div>
+                </div>
+            </header>     
+            <div class="outer-center">
+                <div class="inner-center">
+                    <div id="gameboard"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
