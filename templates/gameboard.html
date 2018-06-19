@@ -8,15 +8,15 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <script src="{{ url_for('static', filename='script.js') }}" async></script>
     </head>
-    <body onLoad="newGameBoard()">
+    <body onLoad="newGameBoard(); setHudWidth();">
         <div class="wrapper">
             <header>Memory<span class="game">Game</span></header>
-                <div class="hud">
-                    <div class="back-button">
-                        <a href="{{url_for('index')}}"><i class="fas fa-caret-left"></i> Go Back</a> 
+                <div id="hud" class="hud">
+                    <div class="back-button" onClick="location='{{url_for('index')}}'">
+                        <i class="fas fa-caret-left"></i> Go Back
                     </div>
-                    <div class="back-button">
-                        <i class="fas fa-caret-left"></i> Time elapsed: 2:42
+                    <div class="time">
+                            <i class="fas fa-clock"></i> 2:43
                     </div>
                 </div>
             </header>     

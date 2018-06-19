@@ -42,18 +42,30 @@ header {
 }
 
 .hud{
-    width: 900px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0;
+    color: #f9f7f7;
 }
 
 .back-button{
-    font-size: 22px;
+    margin-left: 10px;
     float: left;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.back-button:hover{
+    cursor: pointer;
 }
 
 .time{
-    font-size: 22px;
+    margin-right: 10px;
     float: right;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 input,
@@ -149,6 +161,7 @@ form > div > select {
 }
 
 .outer-center {
+    clear: both;
     float: right;
     right: 50%;
     position: relative;
@@ -229,4 +242,9 @@ form > div > select {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-attachment: fixed;
+}
+
+#gameboard{
+    background: #0000;
+    transition: 5s;
 }

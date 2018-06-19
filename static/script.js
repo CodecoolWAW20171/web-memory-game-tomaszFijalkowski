@@ -143,3 +143,11 @@ function flip(card, value, arrayLength){
         }
     }
 }
+
+function setHudWidth(){
+    let width = document.getElementById("gameboard").offsetWidth;
+    let hud = document.getElementById("hud");
+    hud.style.width = width+"px";
+    hud.style.transition = "1s";
+    hud.style.color = "#000";
+}
