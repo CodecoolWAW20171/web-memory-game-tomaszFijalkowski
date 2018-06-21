@@ -14,7 +14,7 @@ const ARRAY = [
     "fas fa-kiwi-bird",
     "fas fa-frog",
     "fas fa-bug",
-    "fas fa-fish",
+    "fas fa-anchor",
     "fas fa-ship",
     "fas fa-motorcycle",
     "fas fa-paper-plane",
