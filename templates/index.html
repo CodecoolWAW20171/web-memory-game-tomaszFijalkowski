@@ -7,10 +7,10 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <script src="{{ url_for('static', filename='script.js') }}" async></script>
     </head>
-    <body>
+    <body onLoad="menuFadeIn();">
         <div class="wrapper">
             <header>Memory<span class="game">Game</span></header>
-            <div class = "board-options">
+            <div class = "board-options js-fade fade-in-menu is-paused">
                 <form action="{{url_for('start_game')}}" method=POST>
                     <div>
                         <label for="select-x">Number of columns:</label><br>

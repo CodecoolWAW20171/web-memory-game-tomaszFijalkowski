@@ -1,30 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta id="boardsize" data-x="{{x}}" data-y="{{y}}">
-        <title>Memory Game</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-        <script src="{{ url_for('static', filename='script.js') }}" async></script>
-    </head>
-    <body onLoad="newGameBoard(); setHudWidth();">
-        <div class="wrapper">
+
+<head>
+    <meta charset="utf-8">
+    <meta id="boardsize" data-x="{{x}}" data-y="{{y}}">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" async></script>
+</head>
+
+<body onLoad="newGameBoard(); setHudWidth(); countTime();">
+    <div class="wrapper">
             <header>Memory<span class="game">Game</span></header>
-                <div id="hud" class="hud">
-                    <div class="back-button" onClick="location='{{url_for('index')}}'">
-                        <i class="fas fa-caret-left"></i> Go Back
-                    </div>
-                    <div class="time">
-                            <i class="fas fa-clock"></i> 2:43
-                    </div>
+        <div id="hud" class="hud">
+            <div class="back-button" onClick="location='{{url_for('index')}}'">
+                <i class="fas fa-caret-left"></i> Go Back
+            </div>
+            <div class="time">
+                <i class="fas fa-clock"></i>
+                <span id="time">0:00</span>
+            </div>
+        </div>
+        </header>
+        <div class="outer-center">
+            <div class="inner-center">
+                <div id="gameboard"></div>
+            </div>
+        </div>
+
+        <div id="myModal" class="modal js-fade fade-in is-paused">
+            <div class="modal-content js-fade fade-in2 is-paused">
+                <div class="modal-won">You Won!<br></div>
+                <div class="modal-time-block">
+                    <div class="modal-your-time"><span class="modal-your">Your</span>
+                    </br><span class="modal-time">Time:</span>
+                    </div><div id="modalTimeNumber" class="modal-time-number"> 5:23</div>
                 </div>
-            </header>     
-            <div class="outer-center">
-                <div class="inner-center">
-                    <div id="gameboard"></div>
+                <div class="modal-buttons">
+                    <div id="modalBack" class="modal-menu">Menu</div>
+                    <div id="modalAgain" class="modal-play-again"><span class="modal-play">Play</span><br><span class="modal-again">Again</span></div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
