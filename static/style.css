@@ -1,3 +1,5 @@
+/* FONTS */
+
 @font-face {
     font-family: Nexa Bold;
     src: url(fonts/nexa_bold.otf);
@@ -7,6 +9,8 @@
     font-family: Nexa Light;
     src: url(fonts/nexa_light.otf);
 }
+
+/* GENERAL */
 
 * {
     margin: 0;
@@ -29,6 +33,22 @@ a {
     color: #000;
 }
 
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.wrapper {
+    width: 100%;
+    display: block;
+}
+
+/* HEADER */
+
 header {
     margin: 60px 0;
     text-align: center;
@@ -40,6 +60,95 @@ header {
 .game {
     font-family: 'Nexa Light', sans-serif;
 }
+
+/* MAIN MENU */
+
+.menu-play-scene {
+    width: 280px;
+    height: 140px;
+    perspective: 400px;
+    margin-right: 12px;
+}
+
+.menu-play {
+    transition: 0.5s;
+    margin: 40px auto 0 auto;
+    padding-right: 6px;
+    padding-top: 15px;
+    font-size: 80px;
+    text-align: center;
+    background: -webkit-linear-gradient(to left, rgba(39, 52, 99, 0.9) 40%, rgba(139, 66, 86, 0.9));
+    background: linear-gradient(to left, rgba(39, 52, 99, 0.9) 40%, rgba(139, 66, 86, 0.9));
+    text-transform: uppercase;
+    width: 280px;
+    height: 140px;
+    line-height: 140px;
+    border-radius: 10px;
+    color: #f9f7f7;
+    font-family: Nexa Light;
+}
+
+.menu-play:hover {
+    transition: 0.5s;
+    cursor: pointer;
+    cursor: pointer;
+    -webkit-transform: rotateX(30deg);
+    -moz-transform: rotateX(30deg);
+    -ms-transform: rotateX(30deg);
+    transform: rotateX(30deg);
+    box-shadow: 0 10px 20px #0008;
+}
+
+/* FORM */
+
+input,
+textarea,
+select {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    background: #fff;
+    margin-top: 5px;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 3%;
+    color: #555;
+    font-size: 20px;
+    font-family: 'Nexa Light', sans-serif;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    box-shadow: 0 0 5px rgba(139, 66, 86, 1);
+    padding: 3%;
+    border: 1px solid rgba(139, 66, 86, 1);
+}
+
+label {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+form div {
+    width: 290px;
+    margin: 0 auto 20px auto;
+}
+
+/* HUD */
 
 .hud {
     width: 300px;
@@ -68,95 +177,7 @@ header {
     letter-spacing: 1px;
 }
 
-input,
-textarea,
-select {
-    -webkit-transition: all 0.30s ease-in-out;
-    -moz-transition: all 0.30s ease-in-out;
-    -ms-transition: all 0.30s ease-in-out;
-    -o-transition: all 0.30s ease-in-out;
-    outline: none;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    width: 100%;
-    text-align: center;
-    background: #fff;
-    margin-bottom: 4%;
-    border: 1px solid #ccc;
-    padding: 3%;
-    color: #555;
-    font-size: 20px;
-    font-family: 'Nexa Light', sans-serif;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    box-shadow: 0 0 5px #61628c;
-    padding: 3%;
-    border: 1px solid #61628c;
-}
-
-input[type="submit"],
-input[type="button"] {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    width: 100%;
-    padding: 3%;
-    background: -webkit-linear-gradient(to left, rgba(39, 52, 99, 0.9) 40%, rgba(139, 66, 86, 0.9));
-    background: linear-gradient(to left, rgba(39, 52, 99, 0.9) 40%, rgba(139, 66, 86, 0.9));
-    background-attachment: fixed;
-    border-bottom: 2px solid #666;
-    border-top-style: none;
-    border-right-style: none;
-    border-left-style: none;
-    color: #fff;
-    margin-top: 25px;
-    font-size: 22px;
-    font-family: 'Nexa Bold', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 5px;
-}
-
-input[type="submit"]:hover,
-input[type="button"]:hover {
-    transition: 0.2s;
-}
-
-label {
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-form {
-    width: 800px;
-    margin: 0 auto;
-}
-
-form>div {
-    width: 48%;
-}
-
-form>div:nth-child(1) {
-    float: left;
-}
-
-form>div:nth-child(2) {
-    float: right;
-}
-
-form>div>select {
-    margin-top: 5px;
-}
-
-.wrapper {
-    width: 100%;
-    display: block;
-}
+/* GAME BOARD */
 
 .outer-center {
     clear: both;
@@ -176,6 +197,8 @@ form>div>select {
     text-align: center;
     clear: both;
 }
+
+/* CARD */
 
 .scene {
     width: 140px;
@@ -206,18 +229,14 @@ form>div>select {
 
 .card__face--front {
     background: -webkit-linear-gradient(to left, rgba(39, 52, 99, 0.9) 40%, rgba(139, 66, 86, 0.9));
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, rgba(39, 52, 99, 0.9) 40%, rgba(139, 66, 86, 0.9));
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-attachment: fixed;
     border-radius: 5px;
 }
 
 .card__face--back {
     background: -webkit-linear-gradient(to left, rgba(39, 184, 196, 0.9) 40%, rgba(178, 194, 140, 0.9));
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, rgba(39, 184, 196, 0.9) 40%, rgba(178, 194, 140, 0.9));
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-attachment: fixed;
     transform: rotateY(180deg);
     border-radius: 5px;
@@ -236,9 +255,16 @@ form>div>select {
     background-attachment: fixed;
 }
 
-#gameboard {
-    background: #0000;
+.hover:hover {
+    cursor: pointer;
+    -webkit-transform: rotateX(30deg);
+    -moz-transform: rotateX(30deg);
+    -ms-transform: rotateX(30deg);
+    transform: rotateX(30deg);
+    box-shadow: 0 5px 10px #0008;
 }
+
+/* ANIMATIONS */
 
 @keyframes fadeIn {
     to {
@@ -249,25 +275,27 @@ form>div>select {
 @keyframes cardFadeIn {
     to {
         opacity: 1;
-        transform:rotateX(0deg) scale(1);
+        transform: rotateX(0deg) scale(1);
     }
 }
 
 @keyframes menuFadeIn {
     to {
         opacity: 1;
+        transform: scale(1);
     }
 }
 
 .fade-in-card {
     opacity: 0;
-    transform:rotateX(60deg) scale(1.2);
+    transform: rotateX(60deg) scale(1.2);
     animation: cardFadeIn .5s ease-in 0s forwards;
 }
 
-.fade-in-menu{
+.fade-in-menu {
     opacity: 0;
-    animation: menuFadeIn 0.5s ease-in 0s forwards;
+    transform: scale(0.9);
+    animation: menuFadeIn 0.33s ease-in 0s forwards;
 }
 
 .fade-in {
@@ -284,14 +312,7 @@ form>div>select {
     animation-play-state: paused;
 }
 
-.hover:hover{
-    cursor: pointer;
-    -webkit-transform: rotateX(30deg);
-    -moz-transform: rotateX(30deg);
-    -ms-transform: rotateX(30deg);
-    transform: rotateX(30deg);
-    box-shadow: 0 5px 10px #0008;
-}
+/* MODAL WINDOW */
 
 .modal {
     background-color: rgba(0, 0, 0, 0.9);
@@ -337,15 +358,13 @@ form>div>select {
     float: left;
 }
 
-.modal-your {}
-
 .modal-time {
     letter-spacing: 6px;
 }
 
 .modal-time-number {
-    background: -webkit-linear-gradient(to left, rgba(39, 184, 196, 0.9) 40%, rgba(178, 194, 140, 0.9));
-    background: linear-gradient(to left, rgba(39, 184, 196, 0.9) 40%, rgba(178, 194, 140, 0.9));
+    background: -webkit-linear-gradient(to left, rgba(39, 184, 196, 1) 40%, rgba(178, 194, 140, 1));
+    background: linear-gradient(to left, rgba(39, 184, 196, 1) 40%, rgba(178, 194, 140, 1));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: Nexa Bold;
@@ -369,16 +388,35 @@ form>div>select {
     margin-left: 33px;
 }
 
+.modal-menu:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background: -webkit-linear-gradient(to left, rgba(39, 184, 196, 1) 40%, rgba(178, 194, 140, 1));
+    background: linear-gradient(to left, rgba(39, 184, 196, 1) 40%, rgba(178, 194, 140, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .modal-play-again {
     margin-top: 3px;
     float: right;
     font-family: Nexa Bold;
     font-size: 50px;
     text-align: right;
+    padding-left: 10px;
+}
+
+.modal-play-again:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background: -webkit-linear-gradient(to left, rgba(39, 184, 196, 1) 40%, rgba(178, 194, 140, 1));
+    background: linear-gradient(to left, rgba(39, 184, 196, 1) 40%, rgba(178, 194, 140, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .modal-play {
-    letter-spacing: 6px;
+    letter-spacing: 10px;
 }
 
 .modal-again {

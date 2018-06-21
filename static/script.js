@@ -1,59 +1,76 @@
+// CONSTANT VALUES
+
 const Y = document.getElementById("boardsize").dataset.y;
 const X = document.getElementById("boardsize").dataset.x;
 const ARRAY = [
-    'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D',
-    'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H',
-    'I', 'I', 'J', 'J', 'K', 'K', 'L', 'L',
-    'M', 'M', 'N', 'N', 'O', 'O', 'P', 'P',
-    'Q', 'Q', 'R', 'R', 'S', 'S', 'T', 'T',
-    'U', 'U', 'V', 'V', 'W', 'W', 'X', 'X',
-    'Y', 'Y', 'Z', 'Z', 'AA', 'AA', 'BB', 'BB',
-    'CC', 'CC', 'DD', 'DD', 'EE', 'EE', 'FF', 'FF',
-];
-const ICONS = {
-    A: "fas fa-crow",
-    B: "fas fa-dove",
-    C: "fas fa-frog",
-    D: "fas fa-kiwi-bird",
-    E: "fas fa-feather",
-    F: "fas fa-leaf",
+    "fas fa-crow",
+    "fas fa-dove",
+    "fas fa-frog",
+    "fas fa-kiwi-bird",
+    "fas fa-feather",
+    "fas fa-leaf",
+    "fas fa-rocket",
+    "fas fa-paper-plane",
+    "fas fa-futbol",
+    "fas fa-volleyball-ball",
+    "fas fa-baseball-ball",
+    "fas fa-basketball-ball",
+    "fas fa-bowling-ball",
+    "fas fa-football-ball",
+    "fas fa-bomb",
+    "fas fa-beer",
+    "fas fa-coffee",
+    "fas fa-flask",
+    "fas fa-glass-martini",
+    "fas fa-wine-glass",
+    "fas fa-sun",
+    "fas fa-moon",
+    "fas fa-star",
+    "fas fa-snowflake",
+    "fas fa-cloud",
+    "fas fa-fire",
+    "fas fa-dice-one",
+    "fas fa-dice-two",
+    "fas fa-dice-three",
+    "fas fa-dice-four",
+    "fas fa-dice-five",
+    "fas fa-dice-six"
+]
 
-    G: "fas fa-rocket",
-    H: "fas fa-paper-plane",
-
-    I: "fas fa-futbol",
-    J: "fas fa-volleyball-ball",
-    K: "fas fa-baseball-ball",
-    L: "fas fa-basketball-ball",
-    M: "fas fa-bowling-ball",
-    N: "fas fa-football-ball",
-    O: "fas fa-bomb",
-
-    P: "fas fa-beer",
-    Q: "fas fa-coffee",
-    R: "fas fa-flask",
-    S: "fas fa-glass-martini",
-    T: "fas fa-wine-glass",
-
-    U: "fas fa-sun",
-    V: "fas fa-moon",
-    W: "fas fa-star",
-    X: "fas fa-snowflake",
-    Y: "fas fa-cloud",
-    Z: "fas fa-fire",
-
-    AA: "fas fa-dice-one",
-    BB: "fas fa-dice-two",
-    CC: "fas fa-dice-three",
-    DD: "fas fa-dice-four",
-    EE: "fas fa-dice-five",
-    FF: "fas fa-dice-six"
-}
+// GLOBAL VALUES
 
 let flippedCounter = 0;
 let flippedIds = [];
 let flipped = [];
 let endGame = false;
+
+// MENU LOGIC
+
+function submit() {
+    let x = document.forms["gameOptions"]["x"].value;
+    let y = document.forms["gameOptions"]["y"].value;
+    if (x != "" && y != "") {
+        document.forms["gameOptions"].submit();
+    } else {
+        if (x == "") {
+            wrongInput("select-x");
+        }
+        if (y == "") {
+            wrongInput("select-y");
+        }
+    }
+}
+
+// GAME LOGIC
+
+function newArray() {
+    let array = ARRAY.map(function (item) {
+        return [item, item];
+    }).reduce(function (a, b) {
+        return a.concat(b)
+    });
+    return shuffle(array.slice(0, X * Y));
+}
 
 function shuffle(array) {
     let currentIndex = array.length,
@@ -68,12 +85,6 @@ function shuffle(array) {
     }
     return array;
 }
-
-
-function newArray() {
-    return shuffle(ARRAY.slice(0, X * Y));
-}
-
 
 function newGameBoard() {
     let array = newArray();
@@ -97,7 +108,7 @@ function newGameBoard() {
             card.setAttribute("onClick", 'flip(this,\'' + array[i] + '\',' + array.length + ')');
             cardFront.setAttribute("class", "card__face card__face--front");
             cardBack.setAttribute("class", "card__face card__face--back");
-            icon.setAttribute("class", "icon " + ICONS[array[i]]);
+            icon.setAttribute("class", "icon " + array[i]);
 
             cardFront.appendChild(empty);
             cardBack.appendChild(icon);
@@ -109,24 +120,6 @@ function newGameBoard() {
         }
     }
     fadeInCards()
-}
-
-function fadeInCards() {
-    let elements = document.querySelectorAll('.js-fade-card');
-    for (let i = 0; i < elements.length; ++i) {
-        setInterval(function () {
-            if (elements[i].classList.contains('is-paused')) {
-                elements[i].classList.remove('is-paused');
-            }
-        }, i * 30);
-    }
-    for (let i = 0; i < elements.length; ++i) {
-        setInterval(function () {
-            if (elements[i].classList.contains('fade-in-card')) {
-                elements[i].setAttribute("class", "card hover js-fade-card is-paused");
-            }
-        }, (i * 30) + 600);
-    }
 }
 
 function flip(card, value, arrayLength) {
@@ -146,7 +139,7 @@ function flip(card, value, arrayLength) {
                 flippedIds = [];
                 flipped = [];
                 if (flippedCounter == arrayLength) {
-                    won();
+                    endScreen();
                 }
             } else {
                 function flipBack() {
@@ -165,18 +158,13 @@ function flip(card, value, arrayLength) {
     }
 }
 
-function setHudWidth() {
-    let width = document.getElementById("gameboard").offsetWidth;
-    let hud = document.getElementById("hud");
-    hud.style.width = width + "px";
-    hud.style.transition = "1s";
-    hud.style.color = "#000";
-}
+// TIME COUNTER
 
 function countTime() {
     let s = 0;
     let m = 0;
     let h = 0;
+
     function seconds() {
         if (!endGame) {
             if (s < 59) {
@@ -209,10 +197,30 @@ function displayTime(h, m, s) {
     document.getElementById("time").innerHTML = time;
 }
 
-function won() {
+// GAME VISUALS
+
+function fadeInCards() {
+    let elements = document.querySelectorAll('.js-fade-card');
+    for (let i = 0; i < elements.length; ++i) {
+        setInterval(function () {
+            if (elements[i].classList.contains('is-paused')) {
+                elements[i].classList.remove('is-paused');
+            }
+        }, i * 30);
+    }
+    for (let i = 0; i < elements.length; ++i) {
+        setInterval(function () {
+            if (elements[i].classList.contains('fade-in-card')) {
+                elements[i].setAttribute("class", "card hover js-fade-card is-paused");
+            }
+        }, (i * 30) + 600);
+    }
+}
+
+function endScreen() {
     endGame = true;
     let time = document.getElementById("time").innerHTML;
-    let modal = document.getElementById('myModal');
+    let modal = document.getElementById('modal');
     let elements = document.querySelectorAll('.js-fade');
     modal.style.display = "block";
     for (let i = 0; i < elements.length; ++i) {
@@ -221,13 +229,17 @@ function won() {
         }
     }
     document.getElementById("modalTimeNumber").innerHTML = time;
-    // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function (event) {
-    //     if (event.target == modal) {
-    //         modal.style.display = "none";
-    //     }
-    // }
 }
+
+function setHudWidth() {
+    let width = document.getElementById("gameboard").offsetWidth;
+    let hud = document.getElementById("hud");
+    hud.style.width = width + "px";
+    hud.style.transition = "1s";
+    hud.style.color = "#000";
+}
+
+// MENU VISUALS
 
 function menuFadeIn() {
     let elements = document.querySelectorAll('.js-fade');
@@ -236,4 +248,18 @@ function menuFadeIn() {
             elements[i].classList.remove('is-paused');
         }
     }
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function wrongInput(id) {
+    document.getElementById(id).style.backgroundColor = '#f73859bb';
+    document.getElementById(id).style.boxShadow = '0 0 6px 2px #f73859bb';
+    document.getElementById(id).style.borderColor = '#f73859'
+    await sleep(200);
+    document.getElementById(id).style.backgroundColor = '#fff';
+    document.getElementById(id).style.boxShadow = 'none';
+    document.getElementById(id).style.borderColor = '#ccc';
 }

@@ -10,8 +10,8 @@ def index():
 
 @app.route('/', methods=["POST"])
 def start_game():
-    y, x = request.form.values()
-    return render_template('gameboard.html', y=y, x=x)
+    x, y = request.form.values()
+    return render_template('gameboard.html', x=x, y=y)
 
 
 if __name__ == "__main__":
